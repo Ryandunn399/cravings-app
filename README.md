@@ -14,9 +14,9 @@ npm install
 This will install any of the node libraries we are utilizing for the project.
 
 # Running the Webserver
-The project is using vite in order to run the development web server for react.  If you want to run the frontend of the website, run this command inside the client subdirectory
+To run the ionic dev server, type in the following command in the client directory
 ```
-npm run dev
+npm run start
 ```
 This will provide you with a localhost address and a specific port.  You can load the webpage by copying the localhost address into a web browser.
 
