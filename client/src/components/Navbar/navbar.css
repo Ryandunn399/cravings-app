@@ -7,14 +7,14 @@
     font-size: 12px;
 }
 
+.nav img {
+    height: 50px;
+}
+
 /* NO SEARCHBAR STYLING */
 
 .navbar-nosearch-img {
     display:flex;
-}
-
-.navbar-nosearch img {
-    height: 50px;
 }
 
 .navbar-nosearch {
@@ -66,3 +66,27 @@ not the cleanest approach but assures proper margins*/
         padding-right: 5px;
     }
 }
+
+/* SEARCH BAR STYLING */
+.navbar-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:70px;
+}
+
+.navbar-search img {
+    margin-left:15%;
+    margin-right: 1%;
+}
+
+.navbar-search-txt {
+    margin-right:15%;
+    margin-left: 1%;
+    white-space: nowrap;
+}
+
+.search-login {
+    padding-right: 20px;
+}
+
