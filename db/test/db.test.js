@@ -47,12 +47,11 @@ describe("Creating users", () => {
 describe("Modifying users", () => {
 
     test('Attempt to change username', async () => {
-        //Assuming username is allowed to be changed
+        //Assuming username is allowed to be changed, must be modified otherwise
         let user = await createUser("cravingsapp");
         expect(user.username).toEqual("cravingsapp");
-        user.username = "newusername";              //i have no idea why this isn't working
+        user.username = "newusername";
         await user.save();              
-        //user = await User.findOneAndUpdate({username: "cravingsapp"}, {$set: {username: "newusername"}}, {new: true}); 
         expect(user.username).toEqual("newusername");
     })
 })
