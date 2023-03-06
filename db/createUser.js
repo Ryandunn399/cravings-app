@@ -1,14 +1,11 @@
-const mongoose = require("mongoose")
+const User = require('./User')
 
-const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true,
-        //immutable: true,
-    },
-    intolerances: [String],
-    favoriteRecipes: [String]
-})
-
-module.exports = mongoose.model("User", userSchema);
+module.exports = async function createUser(username) {
+    try {
+        const newUser = new User({username});
+        await newUser.save();
+        return newUser
+    } catch (err) {
+        throw err;
+    }
+}
