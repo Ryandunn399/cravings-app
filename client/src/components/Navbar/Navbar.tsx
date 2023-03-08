@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import { IonSearchbar } from '@ionic/react'
 import './navbar.css'
 
@@ -6,6 +7,13 @@ import './navbar.css'
  */
 interface NavbarProps {
     hasSearch: boolean
+}
+
+/**
+ * Todo: load new page with routing
+ */
+const handleSubmit = (query: string) => {
+    
 }
 
 /**
@@ -20,8 +28,10 @@ interface NavbarProps {
  * @param {*} props the properties passed by react.
  * @returns the Navbar component of the website.
  */
-const Navbar: React.FC<NavbarProps> = ({hasSearch}) => {
-    
+const Navbar: React.FC<NavbarProps> = ( {hasSearch} ) => {
+    const [query, setQuery] = useState('');
+
+
     // Return the component with the added search bar.
     if (hasSearch) {
         return (
@@ -29,7 +39,19 @@ const Navbar: React.FC<NavbarProps> = ({hasSearch}) => {
                 <div className='nav'>
                     <div className='navbar-search'>
                         <img src={process.env.PUBLIC_URL + '/assets/logo-white.png'} alt='cravings logo'/>
-                        <IonSearchbar></IonSearchbar>
+
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            handleSubmit(query)
+                        }}>
+
+                        <IonSearchbar value={query} onIonChange={e => {
+                            setQuery(e.detail.value!);
+                            console.log(query);
+                        }}>
+                        </IonSearchbar>
+                        
+                        </form>
                         <div className='navbar-search-txt'>
                             <span className='search-login'>Login</span>
                             <span>Sign Up</span>

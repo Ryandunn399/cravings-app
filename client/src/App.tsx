@@ -2,6 +2,8 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home/Home'
+import Test from './pages/Test/Test'
+import Searchpage from './pages/Searchpage/Searchpage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -24,6 +26,10 @@ import './theme/variables.css';
 
 setupIonicReact();
 
+const searchParams = {
+    query: "chicken"
+}
+
 const App: React.FC = () => (
     <IonApp>
         <IonReactRouter>
@@ -33,6 +39,12 @@ const App: React.FC = () => (
                 </Route>
                 <Route exact path="/">
                     <Redirect to="/home" />
+                </Route>
+                <Route exact path="/test">
+                    <Test />
+                </Route>
+                <Route exact path="/search">
+                    <Searchpage searchOptions={searchParams} />
                 </Route>
             </IonRouterOutlet>
         </IonReactRouter>

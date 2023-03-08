@@ -1,0 +1,13 @@
+/**
+ * Responsible for containing all the search cards that show as a result of
+ * searching for recipes.
+ */
+.search-elements {
+    margin-top: 30px;
+    display:flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left:75px;
+    padding-right:75px;
+}

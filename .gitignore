@@ -12,6 +12,9 @@ client/coverage
 # production
 client/build
 
+client/src/pages/Test
+token.json
+
 # misc
 .DS_Store
 .env.local

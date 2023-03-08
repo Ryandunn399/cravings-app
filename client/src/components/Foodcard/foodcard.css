@@ -1,0 +1,52 @@
+/**
+ * Primary card container
+ */
+.food-card {
+    inline-size: 300px;
+    overflow-wrap: break-word;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    color: black;
+    font-size: 16px;
+    display: inline-block;
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+/**
+ * Overflow hidden to avoid the img from zooming outside the container.
+ */
+.food-card-img {
+    overflow:hidden;
+    border-radius: 10px;
+}
+
+/**
+ * The transition here will determine the "speed" at which
+ * the image transitions as it scales.
+ */
+.food-card img {
+    height: 250px;
+    object-fit: fill;
+    display:block;
+    transition: transform .3s ease;
+}
+
+.food-card span {
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/**
+ * Interactive animations for our cards.
+ */
+.food-card:hover img{
+    transform: scale(1.1);
+}
+
+.food-card:hover span {
+    color: #EE3178;
+}
