@@ -33,7 +33,9 @@ export interface SearchOptions {
     addRecipeInformation?: boolean,
     addRecipeNutrition?: boolean,
     maxReadyTime?: number,
-    sort?: string
+    sort?: string,
+    number?: number,
+    offset?: number
 }
 
 /**

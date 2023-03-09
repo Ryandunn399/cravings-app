@@ -2,7 +2,6 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home/Home'
-import Test from './pages/Test/Test'
 import Searchpage from './pages/Searchpage/Searchpage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -26,8 +25,13 @@ import './theme/variables.css';
 
 setupIonicReact();
 
+/**
+ * Placeholder search parameters to load a templated search page.
+ * Cannot handle many cards as theirs current conflicts with ionic.
+ */
 const searchParams = {
-    query: "chicken"
+    query: "chicken",
+    number: 8
 }
 
 const App: React.FC = () => (
@@ -39,9 +43,6 @@ const App: React.FC = () => (
                 </Route>
                 <Route exact path="/">
                     <Redirect to="/home" />
-                </Route>
-                <Route exact path="/test">
-                    <Test />
                 </Route>
                 <Route exact path="/search">
                     <Searchpage searchOptions={searchParams} />
