@@ -3,6 +3,7 @@ import Foodcard from '../../components/Foodcard/Foodcard'
 import Navbar from '../../components/Navbar/Navbar'
 import './searchpage.css'
 import { SearchOptions, sendSearchCall } from '../../utilities/SearchUtilities'
+import { IonContent } from '@ionic/react'
 
 /**
  * Basic interface for our searchbar properties.
@@ -42,9 +43,11 @@ const Searchpage: React.FC<SearchbarProps> = ({searchOptions}) => {
     return (
         <>
             <Navbar hasSearch={true} />
-            <div className='search-elements'>
-                {foodElements}
-            </div>
+            <IonContent>
+                <div className='search-elements'>
+                    {foodElements}
+                </div>
+            </IonContent>
         </>
     )
 }
