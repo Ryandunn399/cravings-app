@@ -1,6 +1,6 @@
 import React from 'react'
 import FoodCard from '../../components/FoodCard/FoodCard'
-import './SearchPage.css'
+import './searchpage.css'
 import { SearchOptions, sendSearchCall, getRecipeInformation } from '../../utilities/SearchUtilities'
 import { IonListHeader, IonLabel, IonIcon, IonCardHeader, IonCard, IonPage, IonContent, IonHeader, IonItem, IonToolbar, IonTitle, IonList,  IonButtons, IonButton, IonSearchbar} from '@ionic/react'
 import { personCircle } from 'ionicons/icons';

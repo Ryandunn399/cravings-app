@@ -1,5 +1,5 @@
 import React from 'react'
-import './FoodCard.css';
+import './foodcard.css';
 import {  IonList, IonImg, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
 import { getRecipeInformation } from '../../utilities/SearchUtilities';
 import FoodModal from '../FoodModal/FoodModal';
