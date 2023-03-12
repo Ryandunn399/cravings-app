@@ -1,8 +1,18 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, 
+        IonIcon,
+        IonLabel,
+        IonRouterOutlet,
+        IonTabBar,
+        IonTabButton,
+        IonTabs,
+        setupIonicReact 
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home/Home'
-import Searchpage from './pages/Searchpage/Searchpage';
+import { readerOutline, searchOutline, listOutline } from 'ionicons/icons';
+import ExplorePage from './pages/ExplorePage/ExplorePage';
+import SearchPage from './pages/SearchPage/SearchPage';
+import RecipePage from './pages/RecipePage/RecipePage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,27 +45,54 @@ setupIonicReact();
  * in the API's database we want to draw from.
  */
 const searchParams = {
-    query: "chicken pasta",
-    number: 30,
+    query: "",
+    number: 50,
     offset: 20
 }
 
+const exploreParams = {
+
+}
+
+const recipeParams = {
+    
+}
+
 const App: React.FC = () => (
-    <IonApp>
-        <IonReactRouter>
-            <IonRouterOutlet>
-                <Route exact path="/home">
-                    <Home />
-                </Route>
-                <Route exact path="/">
-                    <Redirect to="/home" />
-                </Route>
-                <Route exact path="/search">
-                    <Searchpage searchOptions={searchParams} />
-                </Route>
-            </IonRouterOutlet>
-        </IonReactRouter>
-    </IonApp>
+  <IonApp>
+    <IonReactRouter>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/explore">
+            <ExplorePage exploreOptions={exploreParams}/>
+          </Route>
+          <Route exact path="/search">
+            <SearchPage searchOptions={searchParams}/>
+          </Route>
+          <Route exact path="/recipe">
+            <RecipePage recipeOptions={recipeParams}/>
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/search" />
+          </Route>
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="explore" href="/explore">
+            <IonIcon icon={readerOutline} />
+            <IonLabel>Explore</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="recipe" href="/recipe">
+            <IonIcon icon={listOutline} />
+            <IonLabel>Recipes</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="search" href="/search">
+            <IonIcon icon={searchOutline} />
+            <IonLabel>Search</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+    </IonReactRouter>
+  </IonApp>
 );
 
 export default App;

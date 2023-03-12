@@ -39,6 +39,15 @@ export interface SearchOptions {
 }
 
 /**
+ * Interface for RecipePage
+ */
+export interface RecipeOptions {
+
+}
+
+
+
+/**
  * This will make an api request for searching recipes.
  * 
  * @param searchOptions the options available to the search.
@@ -57,6 +66,7 @@ async function sendSearchCall(searchOptions: SearchOptions) {
     return fetch(url, options)
         .then(res => res.json());
 }
+
 
 /**
  * This search will retrieve the recipe given the ID of said recipe.

@@ -1,14 +1,18 @@
-import './foodcard.css'
-
+import React from 'react'
+import './FoodCard.css';
+import {  IonList, IonImg, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
+import { getRecipeInformation } from '../../utilities/SearchUtilities';
+import FoodModal from '../FoodModal/FoodModal';
 /**
  * The food card properties interface. Right now we are passing
  * id, image, and title values to the component.
  */
-interface FoodcardProps {
+interface FoodCardProps {
     id: number, 
     img: string,
     title: string
 }
+
 
 /**
  * This will be the food cards displayed to the user after a successful
@@ -16,17 +20,20 @@ interface FoodcardProps {
  * 
  * @returns food card component. 
  */
-const Foodcard: React.FC<FoodcardProps> = ({id, img, title}) => {
+const FoodCard: React.FC<FoodCardProps> = ({id, img, title}) => {
+
     return (
-        <>
-            <div className='food-card'>
-                <div className='food-card-img'> 
-                    <img alt='food' src={`${img}`}></img>
-                </div>
-                <span>{title}</span>
-            </div>
-        </>
+           <IonItem button>
+                <IonThumbnail slot="start">
+                    <IonImg alt='food' src={`${img}`} style={{
+                    borderRadius: 10,
+            }}></IonImg>
+                </IonThumbnail>
+                <IonLabel>
+                    {title}
+                </IonLabel>
+            </IonItem>
     )
 }
 
-export default Foodcard
+export default FoodCard
