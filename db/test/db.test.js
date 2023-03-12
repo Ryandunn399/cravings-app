@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const { MongoMemoryServer } = require('mongodb-memory-server')
-const db = require ('./db')
+const db = require ('./dbtest')
 const User = require('../User')
 const createUser = require('../createUser')
 const { findOneAndUpdate } = require('../User')
@@ -53,5 +53,30 @@ describe("Modifying users", () => {
         user.username = "newusername";
         await user.save();              
         expect(user.username).toEqual("newusername");
+    })
+
+    test("Attempt to add a supported intolerance", async () => {
+        const user = await createUser("cravingsapp");
+        await db.addIntolerance(user, "Dairy");
+        expect(user.intolerances[0] === "Dairy");
+    })
+
+    test("Attempt to add an unsupported intolerance", async () => {
+        const user = await createUser("cravingsapp");
+        try {
+            await db.addIntolerance(user, "Squid");
+        } catch (err) {
+            expect(err.message).toMatch("String doesn't match any supported intolerances. Check capitalization.");
+        }
+    })
+
+    test("Attempt to add duplicate intolerances", async () => {
+        const user = await createUser("cravingsapp");
+        try {
+            await db.addIntolerance(user, "Dairy");
+            await db.addIntolerance(user, "Dairy");
+        } catch (err) {
+            expect(err.message).toMatch("Intolerance already included.");
+        }
     })
 })
