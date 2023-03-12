@@ -87,7 +87,9 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                 <IonSearchbar value={query} onIonChange={e => {
                             setSearchQuery(e.detail.value!);
                             handleSubmit(e.detail.value!);
-                        }} >
+                        }} placeholder="What are you craving?.." 
+                        showClearButton="focus"
+                        showCancelButton="focus">
                 </IonSearchbar>
                 </IonList>
             {query === "" && 
