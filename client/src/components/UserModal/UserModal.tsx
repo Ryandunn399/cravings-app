@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import './UserModal.css';
 import {   IonList,
   IonAvatar,
   IonAccordionGroup,
   IonAccordion,
-  IonTitle, IonHeader, IonButtons, IonButton, IonModal, IonContent, IonToolbar, IonPage, IonLabel, IonItem } from '@ionic/react';
-import { OverlayEventDetail } from '@ionic/core/components';
+  IonTitle, IonHeader, IonButtons, IonButton, IonModal, IonContent, IonToolbar, IonLabel, IonItem } from '@ionic/react';
 
 /**
  * The UserModalProps interface. 

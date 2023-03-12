@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import FoodCard from '../../components/FoodCard/FoodCard'
 import './SearchPage.css'
-import { SearchOptions, sendSearchCall, getRecipeInformation } from '../../utilities/SearchUtilities'
-import { IonListHeader, IonLabel, IonIcon, IonCardHeader, IonCard, IonPage, IonContent, IonHeader, IonItem, IonToolbar, IonTitle, IonList,  IonButtons, IonButton, IonSearchbar} from '@ionic/react'
+import { SearchOptions, sendSearchCall } from '../../utilities/SearchUtilities'
+import { IonListHeader, IonLabel, IonIcon, IonPage, IonContent, IonHeader, IonItem, IonToolbar, IonTitle, IonList,  IonButtons, IonButton, IonSearchbar} from '@ionic/react'
 import { personCircle } from 'ionicons/icons';
 import FoodModal from '../../components/FoodModal/FoodModal';
 import UserModal from '../../components/UserModal/UserModal';
@@ -24,25 +24,31 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
 
     const [meals, setMeals] = React.useState<any[]>([])
     const [query, setSearchQuery] = React.useState('');
-    const [recipe, setRecipe] = React.useState<any[]>([])
     const [curr_id, setCurrId] = React.useState(0);
     const [trig, setTrig] = React.useState('foodmodal0');
+
+
+    /**
+     * HandleSubmit callback function.
+     * Updates meals with given query
+     */
+
+    const handleSubmit = useCallback(async (value: string) => {
+      try {
+        searchOptions['query'] = value;
+        const data = await sendSearchCall(searchOptions)
+        setMeals(data.results);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setSearchQuery(value); // <-- set loading false when done no matter what
+      }
+    }, [searchOptions]); 
 
     // React hook to make API call.
     React.useEffect(() => {
         handleSubmit(searchOptions['query']);
-    }, [])
-
-    /**
-     * HandleSubmit function.
-     * Updates meals with given query
-     */
-    async function handleSubmit(value: string) {
-        setSearchQuery(value);
-        searchOptions['query'] = value;
-        console.log(searchOptions);
-        sendSearchCall(searchOptions).then(data => setMeals(data.results));
-    }
+    }, [handleSubmit, searchOptions])
 
     //map the meals onto a foodcard
     const foodmeal = meals.map(item => {

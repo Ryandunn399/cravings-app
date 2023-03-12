@@ -1,8 +1,6 @@
 import React from 'react'
 import './FoodCard.css';
-import {  IonList, IonImg, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
-import { getRecipeInformation } from '../../utilities/SearchUtilities';
-import FoodModal from '../FoodModal/FoodModal';
+import {  IonImg, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
 /**
  * The food card properties interface. Right now we are passing
  * id, image, and title values to the component.

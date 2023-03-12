@@ -1,4 +1,4 @@
-import { IonImg, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel } from '@ionic/react';
+import { IonImg, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import React, { ReactElement } from "react";
 
 /**

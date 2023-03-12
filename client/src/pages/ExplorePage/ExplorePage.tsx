@@ -18,7 +18,6 @@ interface ExplorePageOptions {
  * @return explore page
  */
 const ExplorePage: React.FC<ExplorePageOptions> = ({exploreOptions}) => { 
-    const [isVisible, setIsVisible] = React.useState(true);
     const [exploreCardData, setExploreCardData] = React.useState<any[]>([]);
 
     React.useEffect(() => {

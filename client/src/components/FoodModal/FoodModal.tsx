@@ -1,11 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, } from 'react';
 import './FoodModal.css';
-import {   IonList,
-  IonAvatar,
-  IonAccordionGroup,
-  IonAccordion,
-  IonTitle, IonHeader, IonButtons, IonButton, IonContent, IonToolbar, IonModal, IonLabel, IonItem } from '@ionic/react';
-import { OverlayEventDetail } from '@ionic/core/components';
+import {   IonList, IonTitle, IonHeader, IonButtons, IonButton, IonContent, IonToolbar, IonModal, IonItem } from '@ionic/react';
 import { getRecipeInformation } from '../../utilities/SearchUtilities';
 
 /**
@@ -31,7 +26,7 @@ const FoodModal: React.FC<FoodModalProps> = ({id}) => {
     }
 
     React.useEffect(() => {
-      if(id != 0) {
+      if(id !== 0) {
         getRecipeInformation(id).then(data => setRecipe(data));
       }
     })
