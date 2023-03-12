@@ -10,7 +10,7 @@ import UserModal from '../../components/UserModal/UserModal';
 /*
  * Basic interface for our searchbar properties.
  */
-interface SearchPageProps {
+interface SearchPageProps{
     searchOptions: SearchOptions
 }
 
