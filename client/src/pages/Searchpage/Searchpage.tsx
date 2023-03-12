@@ -1,6 +1,6 @@
 import React from 'react'
 import FoodCard from '../../components/FoodCard/FoodCard'
-import './searchpage.css'
+import './SearchPage.css'
 import { SearchOptions, sendSearchCall, getRecipeInformation } from '../../utilities/SearchUtilities'
 import { IonListHeader, IonLabel, IonIcon, IonCardHeader, IonCard, IonPage, IonContent, IonHeader, IonItem, IonToolbar, IonTitle, IonList,  IonButtons, IonButton, IonSearchbar} from '@ionic/react'
 import { personCircle } from 'ionicons/icons';
@@ -66,30 +66,32 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
          <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Cravings</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent fullscreen>
-                
-                <UserModal trigger="usermodalfromsearch"/>
-            <IonHeader collapse="condense">
-                <IonToolbar>
-                    <IonTitle size="large">Search</IonTitle>
+                    <IonTitle>Search</IonTitle>
                     <IonButtons slot="end">
                       <IonButton id="usermodalfromsearch" slot="primary" fill="clear">
-                        <IonIcon slot="icon-only" icon={personCircle}></IonIcon>
+                        <IonIcon slot="icon-only" icon={personCircle} color="medium"></IonIcon>
                       </IonButton>
                     </IonButtons>
+                    <UserModal trigger="usermodalfromsearch"/>
                 </IonToolbar>
-                 <IonToolbar>
+     
+            </IonHeader>
+             
+            <IonContent fullscreen>
+                <IonHeader collapse="condense">
+                  <IonToolbar>
+                    <IonTitle size="large">Search</IonTitle>
+                  </IonToolbar>
+                </IonHeader>
+                <IonList>
                 <IonSearchbar value={query} onIonChange={e => {
                             setSearchQuery(e.detail.value!);
                             handleSubmit(e.detail.value!);
-                        }}>
+                        }} >
                 </IonSearchbar>
-                </IonToolbar>
-                </IonHeader>
-            {query === "" && <IonList lines="none">
+                </IonList>
+            {query === "" && 
+            <IonList lines="none">
             <IonListHeader>
             <IonLabel>Discover</IonLabel>
             </IonListHeader>
@@ -106,7 +108,7 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                 <IonLabel color="primary">keto friendly</IonLabel>
                 </IonItem>
             </IonList>}
-
+            <br />
             <IonList>
                 <div id={trig}>
                 {foodmeal}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IonIcon, IonButton, IonContent, IonPage, IonHeader, IonToolbar, IonTitle } from '@ionic/react';
+import { IonButtons, IonIcon, IonButton, IonContent, IonPage, IonHeader, IonToolbar, IonTitle } from '@ionic/react';
 import { RecipeOptions } from '../../utilities/SearchUtilities'
 import UserModal from '../../components/UserModal/UserModal';
 import { personCircle } from 'ionicons/icons';
@@ -22,18 +22,22 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
             <IonHeader>
                   <IonToolbar>
                     <IonTitle size="large">Recipes</IonTitle>
+                    <IonButtons slot="end">
+                    <IonButton id="usermodalfromrecipe" slot="primary" fill="clear">
+                      <IonIcon slot="icon-only" icon={personCircle} color="medium"></IonIcon>
+                    </IonButton>   
+                    </IonButtons>                 
+                    <UserModal trigger="usermodalfromrecipe"/>
                   </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
             <IonHeader collapse="condense">
                   <IonToolbar>
                     <IonTitle size="large">Recipes</IonTitle>
-                  <IonButton id="usermodalfromrecipe" slot="primary" fill="clear">
-                    <IonIcon slot="icon-only" icon={personCircle}></IonIcon>
-                  </IonButton>
+
                   </IonToolbar>
             </IonHeader>
-            <UserModal trigger="usermodalfromrecipe"/>
+            
             
             </IonContent>
 

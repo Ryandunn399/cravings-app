@@ -44,18 +44,23 @@ const ExplorePage: React.FC<ExplorePageOptions> = ({exploreOptions}) => {
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Explore</IonTitle>
+                    <IonButtons slot="end">
+                    <IonButton id="usermodalfromexplore" slot="primary" fill="clear">
+                        <IonIcon slot="icon-only" icon={personCircle} color="medium"></IonIcon>
+                    </IonButton>
+                    </IonButtons>
+                    <UserModal trigger="usermodalfromexplore"/>
                 </IonToolbar>
             </IonHeader>
+
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                   <IonToolbar>
                     <IonTitle size="large">Explore</IonTitle>
-                  <IonButton id="usermodalfromexplore" slot="primary" fill="clear">
-                    <IonIcon slot="icon-only" icon={personCircle}></IonIcon>
-                  </IonButton>
+
                   </IonToolbar>
                 </IonHeader>
-                <UserModal trigger="usermodalfromexplore"/>
+                
   
                 {exploreCard}
       
