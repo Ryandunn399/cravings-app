@@ -35,7 +35,8 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
 
     const handleSubmit = useCallback(async (value: string) => {
       try {
-        searchOptions['query'] = value;
+        searchOptions['query'] = value
+        searchOptions['number'] = 10
         const data = await sendSearchCall(searchOptions)
         setMeals(data.results);
       } catch (err) {
@@ -90,10 +91,8 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                   </IonToolbar>
                 </IonHeader>
                 <IonList>
-                <IonSearchbar value={query} onIonChange={e => {
-                            setSearchQuery(e.detail.value!);
-                            handleSubmit(e.detail.value!);
-                        }} placeholder="What are you craving?.." 
+                <IonSearchbar value={query} 
+                        placeholder="What are you craving?.." 
                         showClearButton="focus"
                         showCancelButton="focus">
                 </IonSearchbar>
