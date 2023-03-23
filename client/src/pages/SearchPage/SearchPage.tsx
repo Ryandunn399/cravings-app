@@ -27,27 +27,35 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
     const [curr_id, setCurrId] = React.useState(0);
     const [trig, setTrig] = React.useState('foodmodal0');
 
+    /**
+     * updateSearchOptionsQuery callback function.
+     */
+    const updateSearchOptionsQuery = useCallback((value: string) => {
+        console.log("from update " + value);
+        searchOptions['query'] = value
+    }, [searchOptions]);
 
     /**
      * HandleSubmit callback function.
      * Updates meals with given query
      */
-
     const handleSubmit = useCallback(async (value: string) => {
+        console.log("from handleSubmit " + value);
       try {
-        searchOptions['query'] = value
-        searchOptions['number'] = 10
         const data = await sendSearchCall(searchOptions)
         setMeals(data.results);
       } catch (err) {
         console.log(err);
       } finally {
-        setSearchQuery(value); // <-- set loading false when done no matter what
+        setSearchQuery(value); 
       }
-    }, [searchOptions]); 
+    }, [updateSearchOptionsQuery, searchOptions]); 
+
+
 
     // React hook to make API call.
     React.useEffect(() => {
+        console.log("from hook " + searchOptions['query']);
         handleSubmit(searchOptions['query']);
     }, [handleSubmit, searchOptions])
 
@@ -90,19 +98,24 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                     <IonTitle size="large">Search</IonTitle>
                   </IonToolbar>
                 </IonHeader>
-                <IonList>
-                <IonSearchbar value={query} 
-                        placeholder="What are you craving?.." 
-                        showClearButton="focus"
-                        showCancelButton="focus">
+             
+               <IonItem>
+                <IonSearchbar value={query} onIonChange={ e => {
+                    updateSearchOptionsQuery(e.detail.value!)
+                }} placeholder="What are you craving?.." 
+                    showClearButton="focus">
                 </IonSearchbar>
-                </IonList>
+                <IonButton slot="end" onClick={() => handleSubmit(searchOptions['query'])}>
+                    Go
+                </IonButton>
+                </IonItem>
+              
             {query === "" && 
             <IonList lines="none">
             <IonListHeader>
             <IonLabel>Discover</IonLabel>
             </IonListHeader>
-                <IonItem onClick={() => handleSubmit("chicken alfredo")}>
+                <IonItem onClick={() => {handleSubmit("chicken alfredo")}}>
                 <IonLabel color="primary">chicken alfredo</IonLabel>
                 </IonItem>
                 <IonItem onClick={() => handleSubmit("fruit punch")}>
