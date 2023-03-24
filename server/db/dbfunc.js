@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
-const { MongoMemoryServer } = require('mongodb-memory-server')
+const User = require('./User')
 
-const mongoServer = new MongoMemoryServer();
-
-module.exports.connect = async () => {
+module.exports.connect = async (mongoServer) => {
     await mongoServer.start();
     const uri = mongoServer.getUri()
     await mongoose.connect(uri , {
@@ -12,7 +10,7 @@ module.exports.connect = async () => {
     })
 }
 
-module.exports.closeDatabase = async () => {
+module.exports.closeDatabase = async (mongoServer) => {
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
     await mongoServer.stop();
@@ -23,6 +21,16 @@ module.exports.clearDatabase = async () => {
     for (const key in collections) {
         const collection = collections[key];
         await collection.deleteMany();
+    }
+}
+
+module.exports.createUser = async (username) => {
+    try {
+        const newUser = new User({username});
+        await newUser.save();
+        return newUser
+    } catch (err) {
+        throw err;
     }
 }
 

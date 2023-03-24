@@ -1,23 +1,21 @@
-const mongoose = require('mongoose')
 const { MongoMemoryServer } = require('mongodb-memory-server')
-const db = require ('./dbtest')
-const User = require('../User')
-const createUser = require('../createUser')
-const { findOneAndUpdate } = require('../User')
+const dbfunc = require('../dbfunc')
 
 //To run unit tests: npm test
 
-beforeAll(async () => {await db.connect()});
+const mongoServer = new MongoMemoryServer();
 
-afterEach(async () => {await db.clearDatabase()});
+beforeAll(async () => {await dbfunc.connect(mongoServer)});
 
-afterAll(async () => {await db.closeDatabase()});
+afterEach(async () => {await dbfunc.clearDatabase(mongoServer)});
+
+afterAll(async () => {await dbfunc.closeDatabase(mongoServer)});
 
 //tests for user creation
 describe("Creating users", () => {
 
     test("Create basic user", async () => {
-        const user = await createUser("cravingsapp");
+        const user = await dbfunc.createUser("cravingsapp");
         expect(user.username).toEqual("cravingsapp");
     })
 
@@ -25,8 +23,8 @@ describe("Creating users", () => {
         //attempting duplicate usernames should result in an error being thrown
         expect.assertions(1);
         try {
-            await createUser("cravingsapp");
-            await createUser("cravingsapp");
+            await dbfunc.createUser("cravingsapp");
+            await dbfunc.createUser("cravingsapp");
         } catch (err) {
             expect(err.message).toMatch("E11000 duplicate key error collection: test.users index: username_1 dup key: { username: \"cravingsapp\" }");
         }
@@ -36,7 +34,7 @@ describe("Creating users", () => {
         //attempting to create a user with no username should result in an error being thrown
         expect.assertions(1);
         try {
-            await createUser();
+            await dbfunc.createUser();
         } catch (err) {
             expect(err.message).toMatch("User validation failed: username: Path `username` is required.");
         }
@@ -48,7 +46,7 @@ describe("Modifying users", () => {
 
     test('Attempt to change username', async () => {
         //Assuming username is allowed to be changed, must be modified otherwise
-        let user = await createUser("cravingsapp");
+        let user = await dbfunc.createUser("cravingsapp");
         expect(user.username).toEqual("cravingsapp");
         user.username = "newusername";
         await user.save();              
@@ -56,25 +54,25 @@ describe("Modifying users", () => {
     })
 
     test("Attempt to add a supported intolerance", async () => {
-        const user = await createUser("cravingsapp");
-        await db.addIntolerance(user, "Dairy");
+        const user = await dbfunc.createUser("cravingsapp");
+        await dbfunc.addIntolerance(user, "Dairy");
         expect(user.intolerances[0] === "Dairy");
     })
 
     test("Attempt to add an unsupported intolerance", async () => {
-        const user = await createUser("cravingsapp");
+        const user = await dbfunc.createUser("cravingsapp");
         try {
-            await db.addIntolerance(user, "Squid");
+            await dbfunc.addIntolerance(user, "Squid");
         } catch (err) {
             expect(err.message).toMatch("String doesn't match any supported intolerances. Check capitalization.");
         }
     })
 
     test("Attempt to add duplicate intolerances", async () => {
-        const user = await createUser("cravingsapp");
+        const user = await dbfunc.createUser("cravingsapp");
         try {
-            await db.addIntolerance(user, "Dairy");
-            await db.addIntolerance(user, "Dairy");
+            await dbfunc.addIntolerance(user, "Dairy");
+            await dbfunc.addIntolerance(user, "Dairy");
         } catch (err) {
             expect(err.message).toMatch("Intolerance already included.");
         }

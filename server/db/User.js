@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: true,
-        //immutable: true,
     },
     intolerances: [String],
     favoriteRecipes: [String]
