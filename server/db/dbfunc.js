@@ -24,9 +24,9 @@ module.exports.clearDatabase = async () => {
     }
 }
 
-module.exports.createUser = async (username) => {
+module.exports.createUser = async (name, pass) => {
     try {
-        const newUser = new User({username});
+        const newUser = new User({username: name, password: pass});
         await newUser.save();
         return newUser
     } catch (err) {
