@@ -70,7 +70,7 @@ module.exports.obtainUserInfo = async (username, password) => {
     const doc = await User.findOne({username: username});
     if (doc === null) throw new Error("Incorrect username or password.");
     this.verifyPassword(doc, password);
-    const omitPassword = JSON.parse(JSON.stringify(doc));
+    const omitPassword = await JSON.parse(JSON.stringify(doc));
     delete omitPassword.password;
     return omitPassword;
 }
