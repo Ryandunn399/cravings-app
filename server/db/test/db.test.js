@@ -96,3 +96,12 @@ describe("Modifying users", () => {
         }
     })
 })
+
+describe("Obtaining data", () => {
+    test("Obtain user account information omitting password", async () => {
+        await dbfunc.createUser("cravingsapp", "yuuri");
+        const result = await dbfunc.obtainUserInfo("cravingsapp", "yuuri");
+        expect(result.username).toEqual("cravingsapp");
+        expect(result.password).toEqual(undefined);
+    })
+})

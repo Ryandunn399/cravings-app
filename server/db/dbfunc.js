@@ -1,3 +1,4 @@
+const { compare } = require('bcryptjs');
 const mongoose = require('mongoose')
 const User = require('./User')
 
@@ -24,9 +25,9 @@ module.exports.clearDatabase = async () => {
     }
 }
 
-module.exports.createUser = async (name, pass) => {
+module.exports.createUser = async (username, password) => {
     try {
-        const newUser = new User({username: name, password: pass});
+        const newUser = new User({username: username, password: password});
         await newUser.save();
         return newUser
     } catch (err) {
@@ -56,4 +57,20 @@ module.exports.addIntolerance = async (user, String) => {
     } else {
         await user.intolerances.addToSet(String);
     }
+}
+
+module.exports.verifyPassword = async (user, password) => {
+    user.comparePassword(password, function(err, isMatch) {
+        if(err) throw err;
+        if(!isMatch) throw new Error("Incorrect username or password.");
+    });
+}
+
+module.exports.obtainUserInfo = async (username, password) => {
+    const doc = await User.findOne({username: username});
+    if (doc === null) throw new Error("Incorrect username or password.");
+    this.verifyPassword(doc, password);
+    const omitPassword = JSON.parse(JSON.stringify(doc));
+    delete omitPassword.password;
+    return omitPassword;
 }
