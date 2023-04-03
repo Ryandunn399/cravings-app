@@ -59,17 +59,43 @@ module.exports.addIntolerance = async (user, String) => {
     }
 }
 
+/**
+ * Verifies if a username that is passed to the server exists in our database.
+ */
+module.exports.verifyUserExists = async(username) => {
+    const doc = await User.findOne({username: username})
+    if (doc === null) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Probably deprecated
+ */
 module.exports.verifyPassword = async (user, password) => {
     user.comparePassword(password, function(err, isMatch) {
-        if(err) throw err;
-        if(!isMatch) throw new Error("Incorrect username or password.");
+        if(err) {
+            console.log(err)
+        }
+
+        if(!isMatch) {}
     });
 }
 
 module.exports.obtainUserInfo = async (username, password) => {
     const doc = await User.findOne({username: username});
-    if (doc === null) throw new Error("Incorrect username or password.");
-    this.verifyPassword(doc, password);
+
+    if (doc === null) {
+        return null;
+    } 
+    
+    const validPassword = await bcrypt.compare(password, doc.password)
+    if (!validPassword) {
+        return null;
+    }
+
     const omitPassword = await JSON.parse(JSON.stringify(doc));
     delete omitPassword.password;
     return omitPassword;
