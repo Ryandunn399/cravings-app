@@ -39,7 +39,7 @@ setupIonicReact();
  * Placeholder search parameters to load a templated search page.
  * Cannot handle many cards as theirs current conflicts with ionic.
  * 
- * In this case, the search is conducting just a string search of "chicken pasta"
+ * In this case, the search is conducting just a blank string search of "" 
  * as if someone was normally typing this into a search bar.  Then the number variable
  * will determine the number of search results we want to receive and the offset represents where
  * in the API's database we want to draw from.
@@ -47,7 +47,8 @@ setupIonicReact();
 const searchParams = {
     query: "",
     number: 50,
-    offset: 20
+    offset: 20,
+    sort: "healthiness"
 }
 
 const exploreParams = {

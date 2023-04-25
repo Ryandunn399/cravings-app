@@ -44,6 +44,7 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
       try {
         const data = await sendSearchCall(searchOptions)
         setMeals(data.results);
+        console.log(data.results);
       } catch (err) {
         console.log(err);
       } finally {
@@ -57,6 +58,7 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
     React.useEffect(() => {
         console.log("from hook " + searchOptions['query']);
         handleSubmit(searchOptions['query']);
+        // console.log(meals);
     }, [handleSubmit, searchOptions])
 
     //map the meals onto a foodcard
