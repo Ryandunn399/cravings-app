@@ -50,7 +50,7 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
       } finally {
         setSearchQuery(value); 
       }
-    }, [updateSearchOptionsQuery, searchOptions]); 
+    }, [searchOptions]); 
 
 
 
@@ -104,6 +104,8 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                <IonItem>
                 <IonSearchbar value={query} onIonChange={ e => {
                     updateSearchOptionsQuery(e.detail.value!)
+                    if(e.detail.value! === "")
+                        handleSubmit(searchOptions['query'])
                 }} placeholder="What are you craving?.." 
                     showClearButton="focus">
                 </IonSearchbar>
@@ -117,16 +119,24 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
             <IonListHeader>
             <IonLabel>Discover</IonLabel>
             </IonListHeader>
-                <IonItem onClick={() => {handleSubmit("chicken alfredo")}}>
+                <IonItem onClick={() => {
+                    updateSearchOptionsQuery("chicken alfredo");
+                    handleSubmit(searchOptions['query'])}}>
                 <IonLabel color="primary">chicken alfredo</IonLabel>
                 </IonItem>
-                <IonItem onClick={() => handleSubmit("fruit punch")}>
+                <IonItem onClick={() => {
+                    updateSearchOptionsQuery("fruit punch");
+                    handleSubmit(searchOptions['query'])}}>
                 <IonLabel color="primary">fruit punch</IonLabel>
                 </IonItem>
-                <IonItem onClick={() => handleSubmit("sugar free")}>
+                <IonItem onClick={() => {
+                    updateSearchOptionsQuery("sugar free");
+                    handleSubmit(searchOptions['query'])}}>
                 <IonLabel color="primary">sugar free</IonLabel>
                 </IonItem>
-                <IonItem onClick={() => handleSubmit("keto friendly")}>
+                <IonItem onClick={() => {
+                    updateSearchOptionsQuery("keto friendly");
+                    handleSubmit(searchOptions['query'])}}>
                 <IonLabel color="primary">keto friendly</IonLabel>
                 </IonItem>
             </IonList>}

@@ -25,7 +25,8 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({id, name, amount})
                 <IonLabel class="ion-text-wrap">
                     {name}
                 </IonLabel>
-                <p>{amount}</p>
+                <IonLabel class="ion-text-wrap">
+                {amount}</IonLabel>
             </IonItem>
     )
 }

@@ -27,6 +27,23 @@ async function getExploreCardData() {
     return fetch(url).then(res => res.json());
 }
 
+async function getExploreVideoData() {
+    const url = 'https://tasty.p.rapidapi.com/recipes/list?from=0&size=50&tags=under_30_minutes';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'ee73605729mshcbc28e80a1004d1p1a68e1jsne2bd35272f98',
+            'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+        }
+    };
+
+    try {
+        return fetch(url, options).then(res => res.json())
+    } catch (error) {
+        return null;
+    }
+}
+
 
 /**
  * Function to get a random meal.
@@ -37,4 +54,4 @@ async function getRandomMeal() {
     return fetch(url).then(res => res.json());
 }
 
-export { getExploreCardData, getRandomMeal }
+export { getExploreCardData, getRandomMeal, getExploreVideoData }

@@ -8,7 +8,9 @@ import {  IonImg, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
 interface FoodModalContentProps {
     id: number, 
     img: string,
-    title: string
+    title: string,
+    servings: string,
+    readyIn: string
 }
 
 
@@ -17,7 +19,7 @@ interface FoodModalContentProps {
  * on the FoodModal 
  * @returns FoodModalContent component. 
  */
-const FoodModalContent: React.FC<FoodModalContentProps> = ({id, img, title}) => {
+const FoodModalContent: React.FC<FoodModalContentProps> = ({id, img, title, servings, readyIn}) => {
 
     return (
            <IonItem>
@@ -27,8 +29,11 @@ const FoodModalContent: React.FC<FoodModalContentProps> = ({id, img, title}) => 
             }}></IonImg>
                 </IonThumbnail>
                 <IonLabel class="ion-text-wrap">
-                    {title}
+                    <h2>{title}</h2>
+                    <p>Ready in {readyIn} minutes</p>
+                    <p>{servings} servings</p>    
                 </IonLabel>
+                
             </IonItem>
     )
 }

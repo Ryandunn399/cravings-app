@@ -56,7 +56,7 @@ const exploreParams = {
 }
 
 const recipeParams = {
-    
+    query: ""
 }
 
 const App: React.FC = () => (

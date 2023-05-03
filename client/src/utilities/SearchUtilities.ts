@@ -38,14 +38,6 @@ export interface SearchOptions {
     offset?: number
 }
 
-/**
- * Interface for RecipePage
- */
-export interface RecipeOptions {
-
-}
-
-
 
 /**
  * This will make an api request for searching recipes.
