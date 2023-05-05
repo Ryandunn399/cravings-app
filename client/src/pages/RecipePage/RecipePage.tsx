@@ -199,12 +199,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
                   </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
-            <IonHeader collapse="condense">
-                  <IonToolbar>
-                    <IonTitle size="large">Recipes</IonTitle>
 
-                  </IonToolbar>
-            </IonHeader>
 
 
           <IonList>

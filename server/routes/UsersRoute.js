@@ -9,7 +9,7 @@ router.post('/user-verify', async (req, res) => {
 
     const username = req.body.username
     let exists = await dbFunc.verifyUserExists(username)
-    
+
     let responseObj = {
         exists: exists
     }
@@ -21,12 +21,14 @@ router.post('/user-verify', async (req, res) => {
  * Will attempt to create an acccount based on the username and password
  * passed in the body of the request. It will respond with a JSON object
  * that correlates to the status of the request to create a new user and a
- * message with more detail.
+ * message with more detail.  Ensure this gets called via useEffect in order
+ * to avoid crashing the server via entering duplicate keys when using this in 
+ * react components.
  */
 router.post('/user-create', async (req, res) => {
     const username = req.body.username
     const password = req.body.password
-    let responseObj = {status: 'unfulfilled', statusMsg: ''}
+    let responseObj = { status: 'unfulfilled', statusMsg: '' }
 
     let exists = await dbFunc.verifyUserExists(username)
 
@@ -41,11 +43,33 @@ router.post('/user-create', async (req, res) => {
                 status: 'success',
                 statusMsg: 'User account created successfully!'
             }
-        } else {
-            responseObj = {
-                status: 'failed',
-                statusMsg: 'Server side error'
-            }
+        }
+    }
+
+    res.send(JSON.stringify(responseObj))
+})
+
+/**
+ * Will attempt to delete a user based on the username passed in the body
+ * of the request.  Response will handle similary to the user-create route.
+ */
+router.post('/user-delete', async (req, res) => {
+    const username = req.body.username
+
+    let responseObj = { status: 'unfulfilled', statusMsg: '' }
+
+    let exists = await dbFunc.verifyUserExists(username)
+
+    if (!exists) {
+        responseObj = {
+            status: 'failed',
+            statusMsg: 'User does not exist.'
+        }
+    } else {
+        dbFunc.deleteUser(username)
+        responseObj = {
+            status: 'success',
+            statusMsg: 'User deleted successfully.'
         }
     }
 
@@ -61,7 +85,9 @@ router.post('/user-create', async (req, res) => {
 router.post('/user-login', async (req, res) => {
     const username = req.body.username
     const password = req.body.password
-    let responseObj = {status: 'unfulfilled', statusMsg: '', userObj: undefined}
+    let responseObj = { status: 'unfulfilled', statusMsg: '', userObj: undefined }
+
+    console.log("r")
 
     let userInfo = await dbFunc.obtainUserInfo(username, password);
 

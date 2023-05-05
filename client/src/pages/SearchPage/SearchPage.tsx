@@ -95,11 +95,6 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
             </IonHeader>
              
             <IonContent fullscreen>
-                <IonHeader collapse="condense">
-                  <IonToolbar>
-                    <IonTitle size="large">Search</IonTitle>
-                  </IonToolbar>
-                </IonHeader>
              
                <IonItem>
                 <IonSearchbar value={query} onIonChange={ e => {
@@ -117,7 +112,6 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
             {query === "" && 
             <IonList lines="none">
             <IonListHeader>
-            <IonLabel class = 'discover-text'>Discover</IonLabel>
             </IonListHeader>
                 <IonButton class = 'discover-button'onClick={() => {
                     updateSearchOptionsQuery("chicken alfredo");
@@ -141,7 +135,9 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                 </IonButton>
             </IonList>}
             <br />
+
             <IonList >
+            <IonListHeader class = 'discover-text'>Discover</IonListHeader>
                 <div id={trig}>
                 {foodmeal}
                 </div>

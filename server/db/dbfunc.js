@@ -1,6 +1,11 @@
 const { compare } = require('bcryptjs');
+const bcrypt = require('bcryptjs')
 const mongoose = require('mongoose')
 const User = require('./User')
+
+module.exports.connectLocalDatabase = async () => {
+    mongoose.connect('mongodb://127.0.0.1:27017/cravings-app')
+}
 
 module.exports.connect = async (mongoServer) => {
     await mongoServer.start();
@@ -31,8 +36,13 @@ module.exports.createUser = async (username, password) => {
         await newUser.save();
         return newUser
     } catch (err) {
-        throw err;
+
     }
+}
+
+module.exports.deleteUser = async (username) => {
+    User.deleteOne({username: username}).then(() => console.log("deleted " + username))
+    return true;
 }
 
 const supportedIntolerances = 
@@ -64,6 +74,7 @@ module.exports.addIntolerance = async (user, String) => {
  */
 module.exports.verifyUserExists = async(username) => {
     const doc = await User.findOne({username: username})
+
     if (doc === null) {
         return false;
     }

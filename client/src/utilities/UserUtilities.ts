@@ -37,6 +37,24 @@ async function createUserAccount(user: string, pass: string) {
 }
 
 /**
+ * Will make a request to the server to delete a user with the given name.  Will
+ * either respond with a successful response or a failed response if the user did not exist.
+ */
+async function deleteUserAccount(user: string) {
+    const postRoute = `http://localhost:3080/users/user-delete`
+
+    return fetch(postRoute, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: user
+        })
+    }).then((res) => res.json())
+}
+
+/**
  * This function will make a post request to the server in order to
  * obtain user information.  If the server finds a matching username and
  * password, it will return the user object associated with the database
@@ -59,4 +77,4 @@ async function retrieveUserAccount(user: string, pass: string) {
     }).then((res) => res.json())
 }
 
-export { verifyUserExists, createUserAccount, retrieveUserAccount}
+export { verifyUserExists, createUserAccount, retrieveUserAccount, deleteUserAccount }
