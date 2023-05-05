@@ -1,6 +1,6 @@
 import { IonImg, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import React, { ReactElement } from "react";
-
+import './ExploreCard.css';
 /**
  * The explore card properties interface. 
  */

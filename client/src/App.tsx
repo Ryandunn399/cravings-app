@@ -9,7 +9,7 @@ import { IonApp,
         setupIonicReact 
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { readerOutline, searchOutline, listOutline } from 'ionicons/icons';
+import { readerOutline, searchOutline, listOutline, folderOutline, fastFood, fastFoodOutline, homeOutline } from 'ionicons/icons';
 import ExplorePage from './pages/ExplorePage/ExplorePage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import RecipePage from './pages/RecipePage/RecipePage';
@@ -32,7 +32,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-
+import './App.css';
 setupIonicReact();
 
 /**
@@ -79,16 +79,13 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="explore" href="/explore">
-            <IonIcon icon={readerOutline} />
-            <IonLabel>Explore</IonLabel>
+            <IonIcon icon={homeOutline} />
           </IonTabButton>
           <IonTabButton tab="recipe" href="/recipe">
-            <IonIcon icon={listOutline} />
-            <IonLabel>Recipes</IonLabel>
+            <IonIcon icon={fastFoodOutline} />
           </IonTabButton>
           <IonTabButton tab="search" href="/search">
             <IonIcon icon={searchOutline} />
-            <IonLabel>Search</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

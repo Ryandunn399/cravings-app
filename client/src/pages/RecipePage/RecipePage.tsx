@@ -3,7 +3,7 @@ import { IonLabel, IonImg, IonCard, IonCardContent, IonListHeader, IonList, IonB
 import UserModal from '../../components/UserModal/UserModal';
 import RecipeModal from '../../components/RecipeModal/RecipeModal';
 import FoodModal from '../../components/FoodModal/FoodModal';
-import { personCircle } from 'ionicons/icons';
+import { personCircleOutline } from 'ionicons/icons';
 import { RecipeOptions, RecipeListData, getRecipeListData } from '../../utilities/RecipeUtilities';
 import { SearchOptions, sendSearchCall } from '../../utilities/SearchUtilities';
 import RecipeItem from '../../components/RecipeItem/RecipeItem';
@@ -189,10 +189,10 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
 		<IonPage>
             <IonHeader>
                   <IonToolbar>
-                    <IonTitle size="large">Recipes</IonTitle>
+                    <IonTitle class = 'cravings-header'>Recipes</IonTitle>
                     <IonButtons slot="end">
                     <IonButton id="usermodalfromrecipe" slot="primary" fill="clear">
-                      <IonIcon slot="icon-only" icon={personCircle} color="medium"></IonIcon>
+                      <IonIcon slot="icon-only" icon={personCircleOutline} color="light"></IonIcon>
                     </IonButton>   
                     </IonButtons>                 
                     <UserModal trigger="usermodalfromrecipe"/>

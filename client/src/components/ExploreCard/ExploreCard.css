@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Salmaal';
+    src: url('../fonts/SalmaalfasansLight-d9MJx.otf');
+}
+ion-card-title{
+    --color: black;
+    font-family: 'Salmaal';
+}
+ion-card-subtitle{
+    --color: #6c6c6c;
+    font-family: 'Salmaal';
+}
+ion-card{
+    border-radius: 7%;
+    background-color: #faf6f4;
+}

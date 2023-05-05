@@ -3,7 +3,7 @@ import FoodCard from '../../components/FoodCard/FoodCard'
 import './SearchPage.css'
 import { SearchOptions, sendSearchCall } from '../../utilities/SearchUtilities'
 import { IonListHeader, IonLabel, IonIcon, IonPage, IonContent, IonHeader, IonItem, IonToolbar, IonTitle, IonList,  IonButtons, IonButton, IonSearchbar} from '@ionic/react'
-import { personCircle } from 'ionicons/icons';
+import { personCircleOutline, searchCircle, searchOutline } from 'ionicons/icons';
 import FoodModal from '../../components/FoodModal/FoodModal';
 import UserModal from '../../components/UserModal/UserModal';
 
@@ -83,10 +83,10 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
          <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Search</IonTitle>
+                    <IonTitle class = 'cravings-header'>Search</IonTitle>
                     <IonButtons slot="end">
                       <IonButton id="usermodalfromsearch" slot="primary" fill="clear">
-                        <IonIcon slot="icon-only" icon={personCircle} color="medium"></IonIcon>
+                        <IonIcon slot="icon-only" icon={personCircleOutline} color="light"></IonIcon>
                       </IonButton>
                     </IonButtons>
                     <UserModal trigger="usermodalfromsearch"/>
@@ -109,7 +109,7 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                 }} placeholder="What are you craving?.." 
                     showClearButton="focus">
                 </IonSearchbar>
-                <IonButton slot="end" onClick={() => handleSubmit(searchOptions['query'])}>
+                <IonButton size = 'default' slot="end" onClick={() => handleSubmit(searchOptions['query'])}>
                     Go
                 </IonButton>
                 </IonItem>
@@ -117,31 +117,31 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
             {query === "" && 
             <IonList lines="none">
             <IonListHeader>
-            <IonLabel>Discover</IonLabel>
+            <IonLabel class = 'discover-text'>Discover</IonLabel>
             </IonListHeader>
-                <IonItem onClick={() => {
+                <IonButton class = 'discover-button'onClick={() => {
                     updateSearchOptionsQuery("chicken alfredo");
                     handleSubmit(searchOptions['query'])}}>
-                <IonLabel color="primary">chicken alfredo</IonLabel>
-                </IonItem>
-                <IonItem onClick={() => {
+                <IonLabel><IonIcon class = 'search-icon' slot="icon-only" icon={searchOutline} color="light"></IonIcon>chicken alfredo</IonLabel>
+                </IonButton>
+                <IonButton onClick={() => {
                     updateSearchOptionsQuery("fruit punch");
                     handleSubmit(searchOptions['query'])}}>
-                <IonLabel color="primary">fruit punch</IonLabel>
-                </IonItem>
-                <IonItem onClick={() => {
+                <IonLabel><IonIcon class = 'search-icon' slot="icon-only" icon={searchOutline} color="light"></IonIcon>fruit punch</IonLabel>
+                </IonButton>
+                <IonButton class = 'discover-button' onClick={() => {
                     updateSearchOptionsQuery("sugar free");
                     handleSubmit(searchOptions['query'])}}>
-                <IonLabel color="primary">sugar free</IonLabel>
-                </IonItem>
-                <IonItem onClick={() => {
+                <IonLabel><IonIcon class = 'search-icon' slot="icon-only" icon={searchOutline} color="light"></IonIcon>sugar free</IonLabel>
+                </IonButton>
+                <IonButton class = 'discover-button'onClick={() => {
                     updateSearchOptionsQuery("keto friendly");
                     handleSubmit(searchOptions['query'])}}>
-                <IonLabel color="primary">keto friendly</IonLabel>
-                </IonItem>
+                <IonLabel><IonIcon class = 'search-icon' slot="icon-only" icon={searchOutline} color="light"></IonIcon>keto friendly</IonLabel>
+                </IonButton>
             </IonList>}
             <br />
-            <IonList>
+            <IonList >
                 <div id={trig}>
                 {foodmeal}
                 </div>

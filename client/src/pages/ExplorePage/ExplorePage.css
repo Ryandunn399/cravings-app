@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Salmaal';
+    src: url('../fonts/SalmaalfasansLight-d9MJx.otf');
+}
+@font-face {
+    font-family: 'Lofty';
+    src: url('../fonts/LoftygoalsRegular-9Y5Xy.otf');
+}
+ion-toolbar{
+    --background: #e05c33;
+}
+.cravings-header{
+    font-family: 'Lofty';
+    background-color: #e05c33;
+    --color:#ffffff;
+    font-size: 50px;
+    font-family: 'Lofty';
+    text-align: center;
+  }
+.explore-content{
+    padding-top: 8%;
+    padding-bottom: 3%;
+    font-size: 40px;
+    font-family: 'Salmaal';
+}
+.explore-text{
+    font-family:'Salmaal';
+    font-size: medium;
+    display: inline-block;
+    width:auto;
+    height: auto;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+}
+.explore-card{
+    --background: #e05c33;
+    height: auto;
+    width: auto;
+}

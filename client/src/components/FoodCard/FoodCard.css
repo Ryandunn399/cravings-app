@@ -5,7 +5,7 @@
     inline-size: 300px;
     overflow-wrap: break-word;
 
-    font-family: 'Inter';
+    font-family: 'Salmaal';
     font-style: normal;
     font-weight: 700;
     color: black;
@@ -49,4 +49,8 @@
 
 .food-card:hover span {
     color: #EE3178;
+}
+@font-face {
+    font-family: 'Salmaal';
+    src: url(../fonts/SalmaalfasansLightitalic-mLjJ2.otf);
 }
