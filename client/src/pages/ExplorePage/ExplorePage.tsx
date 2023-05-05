@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonIcon, IonButton, IonButtons, IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonGrid, IonRow, IonCol, IonLabel, IonImg, IonItem } from '@ionic/react';
+import { IonText, IonIcon, IonButton, IonButtons, IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonGrid, IonRow, IonCol, IonLabel, IonImg, IonItem } from '@ionic/react';
 import UserModal from '../../components/UserModal/UserModal';
 import ExploreCard from '../../components/ExploreCard/ExploreCard';
 import { accessibility, accessibilityOutline, globe, personCircle, personCircleOutline } from 'ionicons/icons';
@@ -54,8 +54,8 @@ const exploreCard1 = exploreCardData.slice(exploreCardData.length/2,exploreCardD
         />
     )
 })
-	return(
-		<IonPage>
+    return(
+        <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonTitle class = 'cravings-header'>Cravings</IonTitle>
@@ -69,20 +69,16 @@ const exploreCard1 = exploreCardData.slice(exploreCardData.length/2,exploreCardD
             </IonHeader>
 
             <IonContent fullscreen>
-            <IonTitle class = 'explore-content'>Explore new recipes</IonTitle>
+                
+                <br/>
+                <IonLabel class = 'explore-content'>Explore new recipes</IonLabel>
                 <IonLabel class = 'explore-text ion-text-wrap'>Discover new and personalized recipes with the Cravings app</IonLabel>
-                <IonHeader collapse="condense">
-                  <IonToolbar>
-                    <IonTitle size="large">Explore</IonTitle>
-
-                  </IonToolbar>
-                </IonHeader>
                 <IonGrid>
                     <IonRow>
-                        <IonCol>
+                        <IonCol style={{width: "100%"}}>
                             {exploreCard}
                         </IonCol>
-                        <IonCol>
+                        <IonCol style={{width: "100%"}}>
                             {exploreCard1}
                         </IonCol>
                     </IonRow>
@@ -91,7 +87,7 @@ const exploreCard1 = exploreCardData.slice(exploreCardData.length/2,exploreCardD
             </IonContent>
 
         </IonPage>
-	)
+    )
 
 }
 

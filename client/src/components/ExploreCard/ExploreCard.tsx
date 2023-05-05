@@ -32,7 +32,7 @@ export default function ExploreCard({
             		width: 'auto',
           	}} src={image}/>
 			<IonCardHeader>
-				<IonCardTitle>{title}</IonCardTitle>
+				<IonCardSubtitle>{title}</IonCardSubtitle>
 				<IonCardSubtitle>{duration}</IonCardSubtitle>
 			</IonCardHeader>
 		</IonCard>

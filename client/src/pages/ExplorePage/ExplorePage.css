@@ -13,11 +13,12 @@ ion-toolbar{
     font-family: 'Lofty';
     background-color: #e05c33;
     --color:#ffffff;
-    font-size: 50px;
+    font-size: 30px;
     font-family: 'Lofty';
     text-align: center;
   }
 .explore-content{
+    padding-left: 3%;
     padding-top: 8%;
     padding-bottom: 3%;
     font-size: 40px;
@@ -31,7 +32,7 @@ ion-toolbar{
     height: auto;
     padding-right: 5%;
     padding-bottom: 5%;
-    padding-left: 5%;
+    padding-left: 3%;
 }
 .explore-card{
     --background: #e05c33;
