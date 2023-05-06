@@ -30,7 +30,7 @@ const UserModal: React.FC<UserModalProps> = (UserModalProps) => {
         <IonModal ref={userModal} trigger={UserModalProps.trigger}>
           <IonHeader>
             <IonToolbar>
-              <IonTitle>Account</IonTitle>
+              <IonTitle class = 'cravings-header'>Account</IonTitle>
               <IonButtons slot="end">
                 <IonButton strong={true} onClick={() => confirm()}>
                   Done

@@ -86,7 +86,7 @@ const SearchPage: React.FC<SearchPageProps> = ({searchOptions}) => {
                     <IonTitle class = 'cravings-header'>Search</IonTitle>
                     <IonButtons slot="end">
                       <IonButton id="usermodalfromsearch" slot="primary" fill="clear">
-                        <IonIcon slot="icon-only" icon={personCircleOutline} color="light"></IonIcon>
+                        <IonIcon class = 'account-icon' slot="icon-only" icon={personCircleOutline}></IonIcon>
                       </IonButton>
                     </IonButtons>
                     <UserModal trigger="usermodalfromsearch"/>

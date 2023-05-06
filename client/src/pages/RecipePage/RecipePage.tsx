@@ -192,7 +192,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
                     <IonTitle class = 'cravings-header'>Recipes</IonTitle>
                     <IonButtons slot="end">
                     <IonButton id="usermodalfromrecipe" slot="primary" fill="clear">
-                      <IonIcon slot="icon-only" icon={personCircleOutline} color="light"></IonIcon>
+                      <IonIcon class = 'account-icon' slot="icon-only" icon={personCircleOutline}></IonIcon>
                     </IonButton>   
                     </IonButtons>                 
                     <UserModal trigger="usermodalfromrecipe"/>

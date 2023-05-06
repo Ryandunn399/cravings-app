@@ -77,7 +77,7 @@ const FoodModal: React.FC<FoodModalProps> = ({id}) => {
         <IonToolbar>
           <IonButtons slot="start">
           </IonButtons>
-          <IonTitle>Information</IonTitle>
+          <IonTitle class = 'cravings-header'>Information</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={() => close()}>Close</IonButton>
             <IonButton onClick={() => log(recipe)}>Log Recipe</IonButton>

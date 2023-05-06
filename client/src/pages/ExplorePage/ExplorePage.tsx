@@ -60,15 +60,15 @@ const exploreCard1 = exploreCardData.slice(exploreCardData.length/2,exploreCardD
                 <IonToolbar>
                     <IonTitle class = 'cravings-header'>Cravings</IonTitle>
                     <IonButtons slot="end">
-                    <IonButton id="usermodalfromexplore" slot="primary" fill="clear">
-                        <IonIcon slot="icon-only" icon={personCircleOutline} color="light"></IonIcon>
+                    <IonButton id="usermodalfromexplore" slot="primary">
+                        <IonIcon class = 'account-icon' slot="icon-only" icon={personCircleOutline}></IonIcon>
                     </IonButton>
                     </IonButtons>
                     <UserModal trigger="usermodalfromexplore"/>
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent fullscreen>
+            <IonContent fullscreen color={'light'}>
                 
                 <br/>
                 <IonLabel class = 'explore-content'>Explore new recipes</IonLabel>

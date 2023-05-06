@@ -6,8 +6,11 @@ ion-card-title{
     --color: black;
     font-family: 'Salmaal';
 }
+.card-title{
+    --color: black;
+}
 ion-card-subtitle{
-    --color: #6c6c6c;
+    --color: gray;
     font-family: 'Salmaal';
 }
 ion-card{
