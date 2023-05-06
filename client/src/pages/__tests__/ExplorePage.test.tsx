@@ -9,7 +9,9 @@ test('Test ExplorePageRender', () => {
 	const { baseElement } = render(<ExplorePage ExploreOptions={testOptions}/>);
 	expect(baseElement).toBeDefined();
 });
-
-test('Test handlesubmit function', () => {
-
+describe(exploreCard, () => {
+	test('Does the card render', () => {
+		const{exploreCard} = makeSut({card : ExploreCard});
+		expect(exploreCard).toBeDefined({});
+	});
 });
