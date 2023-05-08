@@ -153,7 +153,10 @@ http://ionicframework.com/docs/theming/ */
    */
 
   .ios body {
-    --ion-background-color: #fff;
+<<<<<<< HEAD
+=======
+    --ion-background-color: white;
+>>>>>>> bd4e8e74ce1dfcf17ccf0faaa72771380e102d13
     --ion-background-color-rgb: 0,0,0;
 
     --ion-text-color: #ffffff;
