@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Salmaal';
+    src: url('../fonts/SalmaalfasansLight-d9MJx.otf');
+}
+@font-face {
+    font-family: 'Lofty';
+    src: url('../fonts/LoftygoalsRegular-9Y5Xy.otf');
+}
+
+.info-header{
+    font-family: 'Lofty';
+    font-size: 40px;
+    display: center;
+    width:auto;
+    height: auto;
+    padding-bottom: 0%;
+}
+
+.recipe-subheader{
+    font-family:'Salmaal';
+    font-size: large;
+    display: inline-block;
+    width:auto;
+    height: auto;
+    padding-right: 5%;
+    padding-bottom: 0%;
+    padding-left: 3%;    
+}
+
