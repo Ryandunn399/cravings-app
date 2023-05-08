@@ -76,7 +76,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({id, name, comments, ingredient
     
 
     return (
-    <IonModal ref={foodmodal} trigger={trig}>
+    <IonModal ref={foodmodal} trigger={trig} class = 'recipe-box'>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">

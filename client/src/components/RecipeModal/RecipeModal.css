@@ -13,9 +13,7 @@
     display: center;
     width:auto;
     height: auto;
-    padding-right: 5%;
     padding-bottom: 0%;
-    padding-left: 3%;
 }
 
 .recipe-subheader{
@@ -27,4 +25,8 @@
     padding-right: 5%;
     padding-bottom: 0%;
     padding-left: 3%;
+}
+
+.recipe-box{
+     border-radius: 30%;
 }
