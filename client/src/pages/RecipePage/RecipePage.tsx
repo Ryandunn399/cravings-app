@@ -208,7 +208,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
 
 
           <IonList>
-            <IonListHeader>Vegan Recipes</IonListHeader>
+            <IonListHeader class = 'recipe-subheader'>Vegan Recipes</IonListHeader>
               <Swiper
                 spaceBetween={10}
                 slidesPerView={2}
@@ -219,7 +219,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
 
 
           <IonList>
-            <IonListHeader>Keto Recipes</IonListHeader>
+            <IonListHeader class = 'recipe-subheader'>Keto Recipes</IonListHeader>
               <Swiper
                 spaceBetween={10}
                 slidesPerView={2}
@@ -230,7 +230,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
 
 
           <IonList>
-            <IonListHeader>Nut Free Recipes</IonListHeader>
+            <IonListHeader class = 'recipe-subheader'>Nut Free Recipes</IonListHeader>
               <Swiper
                 spaceBetween={10}
                 slidesPerView={2}
@@ -240,7 +240,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
           </IonList>
 
             <IonList>
-              <IonListHeader>All Recipes</IonListHeader>
+              <IonListHeader class = 'recipe-subheader'>All Recipes</IonListHeader>
             {recipeItem}
             </IonList>
             

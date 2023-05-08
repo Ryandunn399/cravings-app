@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import ExploreCard from '../../components/ExploreCard/ExploreCard';
 import ExplorePage from '../ExplorePage/ExplorePage';
 
 test('Test ExplorePageRender', () => {

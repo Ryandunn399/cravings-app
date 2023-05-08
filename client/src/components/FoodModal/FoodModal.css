@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Salmaal';
+    src: url('../fonts/SalmaalfasansLight-d9MJx.otf');
+}
+
+.recipe-name{
+    font-family:'Salmaal';
+    font-size: small;
+    display: inline-block;
+    width:auto;
+    height: auto;
+    padding-right: 5%;
+    padding-bottom: 0%;
+    padding-left: 3%;    
+}

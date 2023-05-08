@@ -85,7 +85,7 @@ const FoodModal: React.FC<FoodModalProps> = ({id}) => {
       </IonHeader>
       <IonContent className="ion-padding">
 
-        <IonList inset>
+        <IonList inset class = 'recipe-name'>
           <FoodModalContent id={id} img={recipe.image} title={recipe.title} servings={recipe.servings} readyIn={recipe.readyInMinutes} />
         </IonList>
 
