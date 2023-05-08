@@ -1,3 +1,4 @@
+import './RecipeModal.css';
 import React, { useRef, } from 'react';
 import RecipeIngredients from '../../components/RecipeIngredients/RecipeIngredients'
 import { IonItem, IonLabel, IonListHeader, IonList, IonTitle, IonHeader, IonButtons, IonButton, IonContent, IonToolbar, IonModal } from '@ionic/react';
