@@ -4,11 +4,11 @@ import UserModal from '../../components/UserModal/UserModal';
 import ExploreCard from '../../components/ExploreCard/ExploreCard';
 import ExploreThumbnailCard from '../../components/ExploreThumbnailCard/ExploreThumbnailCard'
 import { accessibility, accessibilityOutline, globe, personCircle, personCircleOutline } from 'ionicons/icons';
-import { ExploreOptions, ExploreCardData, getExploreCardData, getExploreVideoData } from '../../utilities/ExploreUtilities';
+import { ExploreOptions, getExploreData } from '../../utilities/ExploreUtilities';
 import './ExplorePage.css';
 import ExploreModal from '../../components/ExploreModal/ExploreModal';
 
-/*
+/* 
  * Basic interface for our ExplorePage properties.
  */
 interface ExplorePageOptions {
@@ -20,47 +20,14 @@ interface ExplorePageOptions {
  * @return explore page
  */
 const ExplorePage: React.FC<ExplorePageOptions> = ({exploreOptions}) => { 
-    const [exploreCardData, setExploreCardData] = React.useState<any[]>([]);
     const [exploreData, setExploreData] = React.useState<any[]>([]);
 
     React.useEffect(() => {
-        getExploreCardData().then(data => {
-            setExploreCardData(data);
-            console.log(data);
-        });
-        getExploreVideoData().then(data => {
+        getExploreData().then(data => {
             setExploreData(data.results);
             console.log(data.results);
         })
     }, [])
-
-    //map the card to a constant
-    //map the card to a constant
-//     const exploreCard1 = exploreCardData.slice(0, exploreCardData.length/2).map((exp:ExploreCardData, index: number) => {
-//         return (
-//             <ExploreCard 
-//                 key={index}
-//                 image={exp.image} 
-//                 title={exp.title}
-//                 description={exp.duration}
-//             />
-
-//         )
-// })
-
-// const exploreCard2 = exploreCardData.slice(exploreCardData.length/2,exploreCardData.length).map((exp:ExploreCardData, index: number) => {
-//     return (
-
-//         <ExploreCard 
-//             key={index}
-//             image={exp.image} 
-//             title={exp.title}
-//             description={exp.duration}
-
-//         />
-
-//     )
-// })
 
     var len = exploreData.length;
     const exploreThumbnail1 = exploreData.slice(0,(len/2)-5).map((exp, index) => {

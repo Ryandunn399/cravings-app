@@ -1,17 +1,13 @@
-import { getExploreCardData, getRandomMeal } from '../ExploreUtilities'
+import { getExploreData } from '../ExploreUtilities'
+
 
 /**
- * This will test the getExploreCardData function
+ * This will test the getExploreData function
  */
-test('Testing the getExploreCardData function', () => {
-    
-})
-
-/**
- * This will test the getRandomMeal function
- */
-test('Testing the getRandomMeal function', () => {
-    
+test('Testing the getExploreData function', async () => {
+    return getExploreData().then(data => {
+        expect(data.results.length).toBeGreaterThan(0);
+    })
 })
 
 

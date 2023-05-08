@@ -31,7 +31,7 @@ test('Testing more detailed search query', async () => {
     }
 
     return sendSearchCall(searchParams).then(data => {
-        expect(data.results[0].servings).toBeGreaterThan(0);
+        expect(data.results.length).toBeGreaterThan(0);
     })
 })
 

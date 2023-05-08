@@ -31,13 +31,17 @@ module.exports.clearDatabase = async () => {
 }
 
 module.exports.createUser = async (username, password) => {
-    try {
-        const newUser = new User({username: username, password: password});
-        await newUser.save();
-        return newUser
-    } catch (err) {
-
-    }
+        try {
+            const newUser = new User({username: username, password: password});
+            await newUser.save();
+            return newUser
+        } catch (err) {
+                if(module.exports.verifyUserExists(username) === true)
+                    throw new Error("E11000 duplicate key error collection: Username already exists")
+                else if(!username)
+                    throw new Error("User validation failed: username: Path `username` is required.");
+        }    
+     
 }
 
 module.exports.deleteUser = async (username) => {

@@ -19,15 +19,10 @@ export type ExploreCardData = {
 }
 
 /**
- * Function to obtain ExploreCardData.
- * Uses a private hosted API made specifically for the cravings app
+ * Function to obtain data for explore card.
+ * Uses the tasty api
  */
-async function getExploreCardData() {
-    const url:string = "https://wayofvod.com/files/exploreCardData.json";
-    return fetch(url).then(res => res.json());
-}
-
-async function getExploreVideoData() {
+async function getExploreData() {
     const url = 'https://tasty.p.rapidapi.com/recipes/list?from=0&size=100&tags=under_30_minutes';
     const options = {
         method: 'GET',
@@ -44,14 +39,4 @@ async function getExploreVideoData() {
     }
 }
 
-
-/**
- * Function to get a random meal.
- * Used 
- */
-async function getRandomMeal() {
-    const url:string = "www.themealdb.com/api/json/v1/1/random.php";
-    return fetch(url).then(res => res.json());
-}
-
-export { getExploreCardData, getRandomMeal, getExploreVideoData }
+export { getExploreData }

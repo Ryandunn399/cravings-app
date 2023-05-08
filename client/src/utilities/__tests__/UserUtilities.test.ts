@@ -17,7 +17,6 @@ test('Test the deletion of a user.', async () => {
     const expectedString = 'success'
 
     await new Promise(r => setTimeout(r, 100))
-
     return deleteUserAccount(user).then(data => {
         expect(data.status).toBe(expectedString)
     })
@@ -28,8 +27,7 @@ test('Test the deletion of a user.', async () => {
  */
 test('Test the deletion of a user that does not exist', async () => {
     const expectedString = 'failed'
-
-    return deleteUserAccount(user).then(data => {
+    return deleteUserAccount(nonUser).then(data => {
         expect(data.status).toBe(expectedString)
     })
 })
