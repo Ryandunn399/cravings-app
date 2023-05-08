@@ -81,7 +81,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({id, name, comments, ingredient
         <IonToolbar>
           <IonButtons slot="start">
           </IonButtons>
-          <IonTitle>Information</IonTitle>
+          <IonTitle class = 'info-header' >Information</IonTitle>
           <IonButtons slot="end">
             <IonButton color="dark" onClick={() => close()}>Close</IonButton>
           </IonButtons>
@@ -89,24 +89,24 @@ const RecipeModal: React.FC<RecipeModalProps> = ({id, name, comments, ingredient
       </IonHeader>
       <IonContent className="ion-padding">
       <IonList inset>
-      <IonListHeader>Name</IonListHeader>
+      <IonListHeader class = 'recipe-subheader'>Name</IonListHeader>
         <IonItem>
         {name}
         </IonItem>
       </IonList>
         {comments !== "" && 
         <IonList inset>
-        <IonListHeader>Comments</IonListHeader> 
+        <IonListHeader class = 'recipe-subheader'>Comments</IonListHeader> 
         <IonItem>
           <IonLabel class="ion-text-wrap">{comments}</IonLabel>
         </IonItem>
       </IonList>}
       <IonList inset>
-      <IonListHeader>Ingredients</IonListHeader>
+      <IonListHeader class = 'recipe-subheader'>Ingredients</IonListHeader>
       {ing}
       </IonList>
       <IonList inset>
-      <IonListHeader>Instructions</IonListHeader>
+      <IonListHeader class = 'recipe-subheader'>Instructions</IonListHeader>
         
           {instMapped}
         
