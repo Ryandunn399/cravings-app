@@ -18,15 +18,11 @@
 
 .recipe-subheader{
     font-family:'Salmaal';
-    font-size: 30px;
+    font-size: large;
     display: inline-block;
     width:auto;
     height: auto;
     padding-right: 5%;
     padding-bottom: 0%;
-    padding-left: 3%;
-}
-
-.recipe-box{
-     border-radius: 30%;
+    padding-left: 3%;    
 }
