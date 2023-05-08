@@ -36,12 +36,8 @@ module.exports.createUser = async (username, password) => {
             await newUser.save();
             return newUser
         } catch (err) {
-                if(module.exports.verifyUserExists(username) === true)
-                    throw new Error("E11000 duplicate key error collection: Username already exists")
-                else if(!username)
-                    throw new Error("User validation failed: username: Path `username` is required.");
+            throw err;
         }    
-     
 }
 
 module.exports.deleteUser = async (username) => {
