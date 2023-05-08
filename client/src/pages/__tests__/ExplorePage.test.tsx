@@ -7,6 +7,6 @@ test('Test ExplorePageRender', () => {
 		query: "",
 	}
 
-	const { baseElement } = render(<ExplorePage ExploreOptions={testOptions}/>);
+	const { baseElement } = render(<ExplorePage exploreOptions={testOptions}/>);
 	expect(baseElement).toBeDefined();
 });

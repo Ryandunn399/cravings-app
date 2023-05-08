@@ -40,8 +40,8 @@ const UserModal: React.FC<UserModalProps> = (UserModalProps) => {
           </IonHeader>
           <IonContent className="ion-padding">
             <IonList inset={true}> 
-              <IonItem lines="inset" color="light">
-                <IonAvatar slot="start">
+              <IonItem lines="inset">
+                <IonAvatar slot="start" color='light'>
                   <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                 </IonAvatar>
                 <IonLabel>

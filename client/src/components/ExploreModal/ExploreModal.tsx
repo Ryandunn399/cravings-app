@@ -70,7 +70,7 @@ const ExploreModal: React.FC<ExploreModalProps> = ({id, title, img, description,
         <IonToolbar>
           <IonButtons slot="start">
           </IonButtons>
-          <IonTitle>Information</IonTitle>
+          <IonTitle class = 'cravings-header'>Information</IonTitle>
           <IonButtons slot="end">
             <IonButton color="dark" onClick={() => close()}>Close</IonButton>
           </IonButtons>
