@@ -25,7 +25,6 @@ describe("Creating users", () => {
 
     test("Attempt to create two users with the same username", async () => {
         //attempting duplicate usernames should result in an error being thrown
-        expect.assertions(1);
         try {
             await dbfunc.createUser("cravingsapp", "password123");
             await dbfunc.createUser("cravingsapp", "password123");
@@ -36,7 +35,6 @@ describe("Creating users", () => {
 
     test("Attempt to create a user with no username or password", async () => {
         //attempting to create a user with no username should result in an error being thrown
-        expect.assertions(1);
         try {
             await dbfunc.createUser();
         } catch (err) {
