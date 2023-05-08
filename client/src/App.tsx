@@ -74,7 +74,7 @@ const App: React.FC = () => (
             <RecipePage recipeOptions={recipeParams}/>
           </Route>
           <Route exact path="/">
-            <Redirect to="/search" />
+            <Redirect to="/explore" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">

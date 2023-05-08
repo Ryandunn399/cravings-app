@@ -31,6 +31,12 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
     const [veganOps] = React.useState<SearchOptions>({query: "vegan", number: 50});
     const [ketoOps] = React.useState<SearchOptions>({query: "keto", number: 50});
     const [nutFreeOps] = React.useState<SearchOptions>({query: "nut free", number: 50});
+    
+    function toTitleCase(str:string) {
+      return str.replace(/\w\S*/g, function(txt){
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+    }
     /*
       React hook to get data and parse it into proper format 
       (object of objects to array of objects)
@@ -105,10 +111,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
       return (
                 <SwiperSlide key={index} >
                   <IonCard id={id} button>
-                        <IonImg id={id} style={{
-                          height: 'auto',
-                                width: 'auto',
-                            }} src={item.image}/>
+                        <img src={item.image}/>
                     <IonCardContent>
                     <IonLabel>{item.title}</IonLabel>
                    
@@ -135,10 +138,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
       return (
                 <SwiperSlide key={index} >
                   <IonCard id={id} button>
-                        <IonImg style={{
-                          height: 'auto',
-                                width: 'auto',
-                            }} src={item.image}/>
+                        <img src={item.image}/>
                     <IonCardContent>
                     <IonLabel>{item.title}</IonLabel>
                     </IonCardContent>
@@ -161,15 +161,20 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
      */
     const nutFreeCards = nutFree.map((item, index) => {
       const id = "foodmodal" + item.id ;
+      var title = item.title
+      if(title.includes("Nut-free"))
+        title = title.replaceAll("Nut-free", "")
+      else if(title.includes("Nut Free"))
+        title = title.replaceAll("Nut Free", "")
+      else if(title.includes("Nut-Free"))
+        title = title.replaceAll("Nut-Free", "")
+      title = toTitleCase(title)
       return (
                 <SwiperSlide key={index} >
                   <IonCard id={id} button>
-                        <IonImg style={{
-                          height: 'auto',
-                                width: 'auto',
-                            }} src={item.image}/>
+                        <img src={item.image}/>
                     <IonCardContent>
-                    <IonLabel>{item.title}</IonLabel>
+                    <IonLabel>{title}</IonLabel>
                     </IonCardContent>
                   </IonCard>
                   </SwiperSlide>

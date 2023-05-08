@@ -82,7 +82,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({id, name, comments, ingredient
           </IonButtons>
           <IonTitle>Information</IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={() => close()}>Close</IonButton>
+            <IonButton color="dark" onClick={() => close()}>Close</IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>

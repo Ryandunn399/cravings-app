@@ -32,7 +32,7 @@ const UserModal: React.FC<UserModalProps> = (UserModalProps) => {
             <IonToolbar>
               <IonTitle class = 'cravings-header'>Account</IonTitle>
               <IonButtons slot="end">
-                <IonButton strong={true} onClick={() => confirm()}>
+                <IonButton color="light" strong={true} onClick={() => confirm()}>
                   Done
                 </IonButton>
               </IonButtons>

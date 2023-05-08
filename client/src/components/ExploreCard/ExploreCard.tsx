@@ -1,4 +1,4 @@
-import { IonImg, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { IonLabel, IonButton, IonContent, IonPopover, IonImg, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import React, { ReactElement } from "react";
 import './ExploreCard.css';
 /**
@@ -6,11 +6,9 @@ import './ExploreCard.css';
  */
 export type ExploreCardProps = {
 	image: string;
-	url: string;
 	title: string;
-	title_url: string;
-	duration: string;
-	duration_url: string;
+	description: string;
+	id: string
 }
 
 /**
@@ -19,22 +17,15 @@ export type ExploreCardProps = {
  */
 export default function ExploreCard({
 	image,
-	url,
 	title,
-	title_url,
-	duration,
-	duration_url
+	description, 
+	id
 }: ExploreCardProps): ReactElement {
 	return (
-		<IonCard>
-			<IonImg style={{
- 					height: 'auto',
-            		width: 'auto',
-          	}} src={image}/>
-			<IonCardHeader>
-				<IonCardSubtitle class = 'card-title'>{title}</IonCardSubtitle>
-				<IonCardSubtitle>{duration}</IonCardSubtitle>
-			</IonCardHeader>
+		<div>
+		<IonCard >
+			<IonImg  src={image}  />
 		</IonCard>
+		</div>
 	);
 }

@@ -6,14 +6,21 @@ ion-card-title{
     --color: black;
     font-family: 'Salmaal';
 }
-.card-title{
-    --color: black;
-}
-ion-card-subtitle{
+
+ion-card{
     --color: gray;
     font-family: 'Salmaal';
+    --size: 50%;
 }
-ion-card{
-    border-radius: 7%;
-    background-color: #faf6f4;
+
+.img{
+    background-size: cover;
+    object-fit: cover;
+    object-position: middle;
+    height: 150px;
+    width: 100%;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(-80%);
 }

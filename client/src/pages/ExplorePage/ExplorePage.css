@@ -32,7 +32,7 @@ ion-toolbar{
     width:auto;
     height: auto;
     padding-right: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 0%;
     padding-left: 3%;
 }
 .explore-card{
@@ -46,3 +46,5 @@ ion-toolbar{
 .account-icon:hover{
     color: gray;
 }
+
+

@@ -1,11 +1,12 @@
 import React from 'react';
-import { IonText, IonIcon, IonButton, IonButtons, IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonGrid, IonRow, IonCol, IonLabel, IonImg, IonItem } from '@ionic/react';
+import { IonPopover, IonText, IonIcon, IonButton, IonButtons, IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonGrid, IonRow, IonCol, IonLabel, IonImg, IonItem } from '@ionic/react';
 import UserModal from '../../components/UserModal/UserModal';
 import ExploreCard from '../../components/ExploreCard/ExploreCard';
+import ExploreThumbnailCard from '../../components/ExploreThumbnailCard/ExploreThumbnailCard'
 import { accessibility, accessibilityOutline, globe, personCircle, personCircleOutline } from 'ionicons/icons';
-import { ExploreOptions, ExploreCardData, getExploreCardData } from '../../utilities/ExploreUtilities';
+import { ExploreOptions, ExploreCardData, getExploreCardData, getExploreVideoData } from '../../utilities/ExploreUtilities';
 import './ExplorePage.css';
-import { url } from 'inspector';
+import ExploreModal from '../../components/ExploreModal/ExploreModal';
 
 /*
  * Basic interface for our ExplorePage properties.
@@ -20,40 +21,84 @@ interface ExplorePageOptions {
  */
 const ExplorePage: React.FC<ExplorePageOptions> = ({exploreOptions}) => { 
     const [exploreCardData, setExploreCardData] = React.useState<any[]>([]);
+    const [exploreData, setExploreData] = React.useState<any[]>([]);
 
     React.useEffect(() => {
-        getExploreCardData().then(data => {setExploreCardData(data);console.log(data);});
+        getExploreCardData().then(data => {
+            setExploreCardData(data);
+            console.log(data);
+        });
+        getExploreVideoData().then(data => {
+            setExploreData(data.results);
+            console.log(data.results);
+        })
     }, [])
 
     //map the card to a constant
     //map the card to a constant
-    const exploreCard = exploreCardData.slice(0, exploreCardData.length/2).map((exp:ExploreCardData, index: number) => {
-        return (
-            <ExploreCard 
-                key={index}
-                image={exp.image} 
-                url={exp.url}
-                title={exp.title}
-                title_url={exp.title_url}
-                duration={exp.duration}
-                duration_url={exp.duration_url}
-            />
-        )
-})
+//     const exploreCard1 = exploreCardData.slice(0, exploreCardData.length/2).map((exp:ExploreCardData, index: number) => {
+//         return (
+//             <ExploreCard 
+//                 key={index}
+//                 image={exp.image} 
+//                 title={exp.title}
+//                 description={exp.duration}
+//             />
 
-const exploreCard1 = exploreCardData.slice(exploreCardData.length/2,exploreCardData.length).map((exp:ExploreCardData, index: number) => {
-    return (
-        <ExploreCard 
-            key={index}
-            image={exp.image} 
-            url={exp.url}
-            title={exp.title}
-            title_url={exp.title_url}
-            duration={exp.duration}
-            duration_url={exp.duration_url}
-        />
-    )
-})
+//         )
+// })
+
+// const exploreCard2 = exploreCardData.slice(exploreCardData.length/2,exploreCardData.length).map((exp:ExploreCardData, index: number) => {
+//     return (
+
+//         <ExploreCard 
+//             key={index}
+//             image={exp.image} 
+//             title={exp.title}
+//             description={exp.duration}
+
+//         />
+
+//     )
+// })
+
+    var len = exploreData.length;
+    const exploreThumbnail1 = exploreData.slice(0,(len/2)-5).map((exp, index) => {
+        if(!exp.seo_title || !exp.thumbnail_url) {
+            return (<div key={index} />)
+        } else {
+            var trig = exp.canonical_id
+                return (
+                    <div key={index} id={exp.id}>
+                    <ExploreCard key={index} title={exp.seo_title} image={exp.thumbnail_url} description={exp.total_time_tier.display_tier} id={exp.id} />
+                    </div>
+                )
+        }
+    })
+    const exploreThumbnail2 = exploreData.slice((len/2)-5, len-2).map((exp, index) => {
+        if(!exp.seo_title || !exp.thumbnail_url) {
+            return (<div key={index} />)
+        } else {
+                return (
+                    <div key={index} id={exp.id}>
+                    <ExploreCard key={index} title={exp.seo_title} image={exp.thumbnail_url} description={exp.total_time_tier.display_tier} id={exp.id} />  
+                    </div>
+                )
+        }
+    })
+
+    const exploreModals = exploreData.map((exp, index) => {
+        if(!exp.seo_title || !exp.thumbnail_url || exp.id === 8441) {
+            return (<div key={index} />)
+        } else {
+            return (
+                
+                <ExploreModal key={index} id={exp.id} title={exp.seo_title} img={exp.thumbnail_url} description={exp.description} instructions={exp.instructions} ingredients={exp.sections[0].components} readyIn={exp.total_time_minutes} servings={exp.num_servings} />
+     
+            )
+        }
+    })
+
     return(
         <IonPage>
             <IonHeader>
@@ -68,7 +113,7 @@ const exploreCard1 = exploreCardData.slice(exploreCardData.length/2,exploreCardD
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent fullscreen color={'light'}>
+            <IonContent fullscreen >
                 
                 <br/>
                 <IonLabel class = 'explore-content'>Explore new recipes</IonLabel>
@@ -76,16 +121,15 @@ const exploreCard1 = exploreCardData.slice(exploreCardData.length/2,exploreCardD
                 <IonGrid>
                     <IonRow>
                         <IonCol style={{width: "100%"}}>
-                            {exploreCard}
+                            {exploreThumbnail1}
                         </IonCol>
                         <IonCol style={{width: "100%"}}>
-                            {exploreCard1}
+                            {exploreThumbnail2}
                         </IonCol>
                     </IonRow>
                 </IonGrid>
-      
+                {exploreModals}
             </IonContent>
-
         </IonPage>
     )
 
