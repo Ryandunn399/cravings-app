@@ -48,14 +48,18 @@ const ExploreModal: React.FC<ExploreModalProps> = ({id, title, img, description,
     var desc = removeTags(description)
 
     const ing = ingredients.map((item, index) => {
-      if(item.measurements[0].quantity === "0") {
-        var measurements = "Optional"
-      } else {
-        var measurements = item.measurements[0].quantity + " " + item.measurements[0].unit.display_plural
+
+      if(item.measurements){      
+          if(item.measurements[0].quantity === "0") {
+            var measurements = "Optional"
+          } else {
+            var measurements = item.measurements[0].quantity + " " + item.measurements[0].unit.display_plural
+          }
+          return (
+          <RecipeIngredients key={index} id={index} name={item.ingredient.name} amount={measurements} />
+        )
       }
-      return (
-        <RecipeIngredients key={index} id={index} name={item.ingredient.name} amount={measurements} />
-      )
+      
     })
 
     const inst = instructions.map((item, index) => {

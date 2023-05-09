@@ -8,7 +8,7 @@ import { RecipeOptions, RecipeListData, getRecipeListData } from '../../utilitie
 import { SearchOptions, sendSearchCall } from '../../utilities/SearchUtilities';
 import RecipeItem from '../../components/RecipeItem/RecipeItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import 'swiper/swiper.min.css'
 
 
 /*
@@ -212,7 +212,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
               <Swiper
                 spaceBetween={10}
                 slidesPerView={2}
-                onSwiper={(swiper) => console.log(swiper)} >
+                 >
                 {veganCards}
               </Swiper>
           </IonList>
@@ -223,7 +223,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
               <Swiper
                 spaceBetween={10}
                 slidesPerView={2}
-                onSwiper={(swiper) => console.log(swiper)} >
+                >
                 {ketoCards}
               </Swiper>
           </IonList>
@@ -234,7 +234,7 @@ const RecipePage: React.FC<RecipePageProps> = ({recipeOptions}) => {
               <Swiper
                 spaceBetween={10}
                 slidesPerView={2}
-                onSwiper={(swiper) => console.log(swiper)} >
+                 >
                 {nutFreeCards}
               </Swiper>
           </IonList>

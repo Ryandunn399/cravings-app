@@ -2,7 +2,6 @@ import React from 'react';
 import { IonPopover, IonText, IonIcon, IonButton, IonButtons, IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonGrid, IonRow, IonCol, IonLabel, IonImg, IonItem } from '@ionic/react';
 import UserModal from '../../components/UserModal/UserModal';
 import ExploreCard from '../../components/ExploreCard/ExploreCard';
-import ExploreThumbnailCard from '../../components/ExploreThumbnailCard/ExploreThumbnailCard'
 import { accessibility, accessibilityOutline, globe, personCircle, personCircleOutline } from 'ionicons/icons';
 import { ExploreOptions, getExploreData } from '../../utilities/ExploreUtilities';
 import './ExplorePage.css';
