@@ -1,3 +1,4 @@
+const { key } = require('./key.json')
 /**
  * Interface for ExplorePage
  */
@@ -27,7 +28,7 @@ async function getExploreData() {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'c229cee9c0msh2f6c01c3a7bf50ap1421d8jsn0202e6e8a9c4',
+            'X-RapidAPI-Key': key,
             'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
         }
     };
